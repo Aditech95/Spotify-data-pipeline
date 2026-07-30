@@ -3,3 +3,7 @@ venv/
 __pycache__/
 *.pyc
 .cache
+airflow_cache/
+logs/
+plugins/
+dags/__pycache__/

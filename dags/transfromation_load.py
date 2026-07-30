@@ -64,11 +64,11 @@ def create_dataframes(data):
 
 def load_to_postgres(album_df, artists_df, song_df):
     conn = psycopg2.connect(
-        host=os.getenv('DB_HOST'),
-        database=os.getenv('DB_NAME'),
-        user=os.getenv('DB_USER'),
-        password=os.getenv('DB_PASSWORD')
-    )
+    host=os.getenv('SPOTIFY_DB_HOST'),
+    database=os.getenv('SPOTIFY_DB_NAME'),
+    user=os.getenv('SPOTIFY_DB_USER'),
+    password=os.getenv('SPOTIFY_DB_PASSWORD')
+)
     cur = conn.cursor()
 
     cur.execute("""
