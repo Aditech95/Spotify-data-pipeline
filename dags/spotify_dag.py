@@ -1,5 +1,9 @@
-from airflow.decorators import dag, task
+import sys
+sys.path.insert(0, "/opt/airflow/dags")
+
 from datetime import datetime
+
+from airflow.decorators import dag, task
 
 
 @dag(
@@ -13,16 +17,29 @@ def spotify_pipeline():
 
     @task
     def extract():
+
         from spotify_api_extract import extract_spotify_data
+
         return extract_spotify_data()
 
     @task
     def transform_and_load(data):
-        from transfromation_load import create_dataframes, load_to_postgres
+
+        from transformation_load import (
+            create_dataframes,
+            load_to_postgres
+        )
+
         album_df, artists_df, song_df = create_dataframes(data)
-        load_to_postgres(album_df, artists_df, song_df)
+
+        load_to_postgres(
+            album_df,
+            artists_df,
+            song_df
+        )
 
     raw_data = extract()
+
     transform_and_load(raw_data)
 
 
