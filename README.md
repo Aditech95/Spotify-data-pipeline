@@ -445,5 +445,3 @@ Possible improvements to make the pipeline more production-oriented:
 GitHub: [Aditech95](https://github.com/Aditech95)
 
 ---
-
-⭐ If you found this project useful, feel free to explore the repository and connect with me on LinkedIn.
